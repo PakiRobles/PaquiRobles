@@ -1,0 +1,42 @@
+/*1. Crea una tabla llamada "Productos" con las columnas: "id" (entero, clave
+primaria), "nombre" (texto) y "precio" (numérico).*/
+
+TABLE IF NOT EXISTS "Productos" (
+	"id" INT PRIMARY KEY,
+	"nombre" VARCHAR (255),
+	"precio" INT
+);
+
+/*2. Inserta al menos cinco registros en la tabla "Productos".*/
+
+INSERT INTO public."Productos" ("id","nombre","precio")
+VALUES 
+  ('1','Samsung Galaxy S24 Ultra 12/256GB','1099'),
+	('2','Apple iPhone 16 128GB','959'),
+	('3', 'Xiaomi Redmi Note 13 Pro 5G 8/256GB', '269'),
+	('4','Oppo Find X3 Neo 256GB','187'),
+	('5','Motorola moto edge 40 neo','356')
+
+/*3. Actualiza el precio de un producto en la tabla "Productos".*/
+
+UPDATE public."Productos"
+SET "precio" = '430'
+WHERE "id" = '5'
+
+/*4. Elimina un producto de la tabla "Productos".*/
+DELETE FROM "Productos"
+WHERE "id" = '2'
+
+
+/*5. Realiza una consulta que muestre los nombres de los usuarios junto con los
+nombres de los productos que han comprado (utiliza un INNER JOIN con la
+tabla "Productos")*/
+SELECT 
+"u"."nombre" as "Cliente",
+"p"."nombre" as "nombre_producto"
+FROM public."Usuarios" "u"
+INNER JOIN public."Productos" "p"
+ON u."id" = p."id"
+
+
+
